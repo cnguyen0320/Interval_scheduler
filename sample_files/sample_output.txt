@@ -1,0 +1,22 @@
+sample_files/sample.txt loaded sucessfully
+Initial list of requests:
+(69, 87)
+(34, 94)
+(14, 28)
+(83, 99)
+(52, 56)
+(74, 81)
+(34, 46)
+(35, 93)
+(6, 15)
+(9, 79)
+(2, 100)
+(33, 50)
+(81, 83)
+Optimal schedule (6/13 requests fulfilled):
+(6, 15)
+(34, 46)
+(52, 56)
+(74, 81)
+(81, 83)
+(83, 99)
