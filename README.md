@@ -19,3 +19,6 @@ If no modeFlag is specified, the program defaults to modeFlag 0.
 Only modeFlag 2 requires a file to be specified. Other modes will not check for the filename argument.
 
 If using modeFlag 2, the file should be formatted with each interval on its own line. The program will automatically parse spaces, tabs, and commas. A sample file is included.
+
+After scheduling, the program will display a visualization of the scheduled requests.
+![alt text](sample_plot.png)
