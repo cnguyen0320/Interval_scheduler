@@ -1,7 +1,7 @@
 # Interval_scheduler
 
 ## Description
-This is a demonstration of an interval scheduler that creates an optimal (maximizing number of scheduled requests) scheduler by using earliest finish time as the heuristic to schedule next requests.
+This is a demonstration of an interval scheduler that creates an optimal scheduler (maximized number of scheduled requests)  by using earliest finish time as the heuristic to schedule next requests. This demonstration assumes all requests are weighted equally.
 
 A valid request is such that the start time is less than the end time. Compatible requests are two requests for which the end time of one is less than or equal to the start time of the other.
 
