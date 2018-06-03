@@ -25,12 +25,13 @@ def randomize():
     GLOBAL_START= 0
     GLOBAL_STOP= 100
     
-    #Create the list of intervals
+    #Create the list of intervals randomly
     for i in range(random.randint(10,30)):
         request_start = random.randint(GLOBAL_START, GLOBAL_STOP-1)
         request_stop = random.randint(request_start+1, GLOBAL_STOP)
         interval_list.append(request(request_start, request_stop))
 
+#Takes user input to create a list of requests
 def enter_manually():
     print("Enter a blank value at any time to complete your list")
     while True:
@@ -57,18 +58,7 @@ def enter_manually():
         except IndexError:
             print("ERROR: Must have at least 1 request\n")
 
-def create_schedule():
-    scheduled_list = [interval_list[0]]
-    for req in interval_list[1:]:
-        if req.start >= scheduled_list[-1].end:
-            scheduled_list.append(req)
-    
-    print("Optimal schedule (%d requests fulfilled):" % len(scheduled_list))
-    for request in scheduled_list:
-        print(request)
-        
-    return scheduled_list
-
+#Reads a file and parses it for request intervals. Omits invalid requests
 def read_list():
     if len(sys.argv) <3:
         print("invalid command line syntax. Try 'python interval_scheduling.py <modeFlag> <file.txt>")
@@ -99,9 +89,27 @@ def read_list():
         exit(1)
         
 
+#Uses the earliest finish time as a heuristic for best next scheduled interval and creates a schedule
+def create_schedule():
+    #sorts the list by earliest finish time
+    interval_list.sort(key = lambda req: req.end, reverse = False)
+    
+    scheduled_list = [interval_list[0]]
+    for req in interval_list[1:]:
+        if req.start >= scheduled_list[-1].end:
+            scheduled_list.append(req)
+    
+    print("Optimal schedule (%d/%d requests fulfilled):" % (len(scheduled_list), len(interval_list)))
+    for request in scheduled_list:
+        print(request)
+        
+    return scheduled_list
+
 #%%
+        
 interval_list = []
 
+#Parses the command line args to check the mode
 if len(sys.argv) <= 1 or sys.argv[1]== '0':
     randomize()
 
@@ -115,8 +123,6 @@ else:
     print("invalid command line syntax. Try 'python interval_scheduling.py <modeFlag> <file.txt>")
     exit(1)
 
-#sorts the list by earliest finish time
-interval_list.sort(key = lambda req: req.end, reverse = False)
 print("Initial list of requests:")
 for req in interval_list:
     print(req)
