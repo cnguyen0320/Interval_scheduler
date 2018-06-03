@@ -22,4 +22,4 @@ If using modeFlag 2, the file should be formatted with each interval on its own 
 
 ## Output
 After scheduling, the program will display a visualization of the scheduled requests via text and by a plot.
-![alt text](sample_plot.png)
+![alt text](sample_files/sample_plot.png)
