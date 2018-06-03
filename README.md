@@ -8,10 +8,9 @@ To run:
 ```python interval_scheduling.py <modeFlag> <filename.txt>```
 
 modeFlags:
-
-	0. randomize the request intervals
-  1. manually input request intervals by command line prompt 
-  2. upload a file containing requests. Requires filename to be specified in the arguments.
+[0] randomize the request intervals
+[1] manually input request intervals by command line prompt 
+[2] upload a file containing requests. Requires filename to be specified in the arguments.
 
 If no modeFlag is specified, the program defaults to modeFlag 0.
 Only modeFlag 2 requires a file to be specified. Other modes will not check for the filename argument.
