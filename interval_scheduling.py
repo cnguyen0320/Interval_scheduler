@@ -74,7 +74,9 @@ def read_list():
             print("%s loaded sucessfully" % sys.argv[2])
             content = file.readlines()
             for line in content:
-                line = line.replace(',', ' ').split()
+                for char in ['(', ')', '[',']','<','>', '{', '}',',']:
+                    line = line.replace(char, ' ')
+                line = line.split()
                 try:
                     interval_list.append(request(float(line[0]), float(line[1])))
                 except ValueError:
